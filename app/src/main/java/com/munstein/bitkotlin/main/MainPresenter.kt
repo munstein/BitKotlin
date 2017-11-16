@@ -8,6 +8,7 @@ import io.reactivex.schedulers.Schedulers
 /**
  * Created by @Munstein on 10/11/2017. --16:39
  */
+
 class MainPresenter : MainMVP.IPresenter{
 
     private var view : MainMVP.IView
@@ -41,7 +42,7 @@ class MainPresenter : MainMVP.IPresenter{
         var formattedValue = StringBuilder()
         formattedValue.append(data.get(value)!!.symbol)
         formattedValue.append(" ")
-        formattedValue.append(data.get(value)!!.get15m())
+        formattedValue.append(data.get(value)!!._15m)
         view.loadValue(formattedValue.toString())
     }
 
