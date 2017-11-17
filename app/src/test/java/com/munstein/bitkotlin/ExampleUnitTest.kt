@@ -15,24 +15,9 @@ import org.junit.Assert.*
  */
 class ExampleUnitTest {
 
-    val bitcoinApiService by lazy {
-        BitcoinApiService.create()
-    }
-    var disposable: Disposable? = null
-
     @Test
     fun addition_isCorrect() {
         assertEquals(4, 2 + 2)
-    }
-
-    @Test
-    fun returns_something(){
-        disposable = bitcoinApiService.getBitcoinValues()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(
-                        {}
-                )
     }
 
 

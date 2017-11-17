@@ -11,21 +11,18 @@ import retrofit2.http.GET
  */
 interface BitcoinApiService {
 
-    @GET("ticker/")
+    @GET("pt/ticker/")
     fun getBitcoinValues() : Observable<Map<String, BitcoinValues>>
 
     companion object {
         fun create(): BitcoinApiService {
-
             val retrofit = Retrofit.Builder()
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .addConverterFactory(
                             GsonConverterFactory.create())
-                    .baseUrl("https://blockchain.info/pt/")
+                    .baseUrl("https://blockchain.info/")
                     .build()
-
             return retrofit.create(BitcoinApiService::class.java)
-
         }
     }
 }

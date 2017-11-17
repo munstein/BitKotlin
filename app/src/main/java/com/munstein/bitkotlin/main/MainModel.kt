@@ -20,11 +20,4 @@ class MainModel : MainMVP.IModel {
         return service.getBitcoinValues()
     }
 
-    /*override fun getCurrencies(): Collection<String> {
-        return coreData.keys
-    }
-
-    override fun getValues(currency: String): BitcoinValues {
-        return coreData.get(currency)!!
-    }*/
 }

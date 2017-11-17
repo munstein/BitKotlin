@@ -18,6 +18,7 @@ interface MainMVP {
         fun loadValue(currency : String)
         fun showProgressDialog(msg : String)
         fun hideProgressDialog()
+        fun showErrorMessage(msg : String)
     }
 
     interface IPresenter{

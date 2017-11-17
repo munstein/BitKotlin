@@ -13,14 +13,12 @@ class MainPresenter : MainMVP.IPresenter{
 
     private var view : MainMVP.IView
     private var model : MainMVP.IModel
-    lateinit var data : Map<String, BitcoinValues>
-
     private var disposable: Disposable? = null
+    lateinit var data : Map<String, BitcoinValues>
 
     constructor(view : MainMVP.IView, model : MainMVP.IModel){
         this.view = view
         this.model = model
-
     }
 
     override fun getAndDisplayBitcoinValue() {
@@ -30,11 +28,15 @@ class MainPresenter : MainMVP.IPresenter{
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         {
-                            result -> view.hideProgressDialog()
-                            data = result
-                            view.loadCurrencies(data.keys.toList())
+                            result ->
+                                view.hideProgressDialog()
+                                data = result
+                                view.loadCurrencies(data.keys.toList())
                         },
-                        {error -> view.hideProgressDialog()}
+                        {   error ->
+                                view.hideProgressDialog()
+                                view.showErrorMessage("Unable to fetch values. ")
+                        }
                 )
     }
 

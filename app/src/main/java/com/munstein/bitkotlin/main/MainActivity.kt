@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import com.munstein.bitkotlin.R
 import com.munstein.bitkotlin.services.BitcoinApiService
 import kotlinx.android.synthetic.main.activity_main.*
@@ -60,6 +61,10 @@ class MainActivity : AppCompatActivity(), MainMVP.IView, AdapterView.OnItemSelec
 
     override fun hideProgressDialog() {
         dialog.dismiss()
+    }
+
+    override fun showErrorMessage(msg: String) {
+        Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
     }
 
     override fun onNothingSelected(adapter: AdapterView<*>?) {}
