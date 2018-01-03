@@ -32,10 +32,12 @@ class MainPresenter : MainMVP.IPresenter{
                                 view.hideProgressDialog()
                                 data = result
                                 view.loadCurrencies(data.keys.toList())
+                                view.hideError()
                         },
                         {   error ->
                                 view.hideProgressDialog()
                                 view.showErrorMessage("Unable to fetch values. ")
+                                view.showError()
                         }
                 )
     }

@@ -19,6 +19,8 @@ interface MainMVP {
         fun showProgressDialog(msg : String)
         fun hideProgressDialog()
         fun showErrorMessage(msg : String)
+        fun hideError()
+        fun showError()
     }
 
     interface IPresenter{

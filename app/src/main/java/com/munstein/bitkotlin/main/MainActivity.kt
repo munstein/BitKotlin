@@ -73,4 +73,16 @@ class MainActivity : AppCompatActivity(), MainMVP.IView, AdapterView.OnItemSelec
         presenter.onItemChange(main_spinner_currency.selectedItem.toString())
     }
 
+    override fun showError() {
+        main_txt_error.visibility = View.VISIBLE
+        main_txt_value.visibility = View.GONE
+        main_spinner_currency.visibility = View.GONE
+    }
+
+    override fun hideError(){
+        main_txt_error.visibility = View.GONE
+        main_txt_value.visibility = View.VISIBLE
+        main_spinner_currency.visibility = View.VISIBLE
+    }
+
 }
