@@ -8,10 +8,11 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.munstein.bitkotlin.R
+import com.munstein.bitkotlin.base.BaseActivity
 import com.munstein.bitkotlin.services.BitcoinApiService
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(), MainMVP.IView, AdapterView.OnItemSelectedListener {
+class MainActivity : BaseActivity(), MainMVP.IView, AdapterView.OnItemSelectedListener {
 
     private lateinit var presenter : MainPresenter
     private lateinit var currenciesAdapter : ArrayAdapter<String>

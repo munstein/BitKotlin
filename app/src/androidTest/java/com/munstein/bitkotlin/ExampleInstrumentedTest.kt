@@ -2,7 +2,6 @@ package com.munstein.bitkotlin
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.espresso.Espresso.onView
-import android.support.test.espresso.matcher.ViewMatchers.withId
 import android.support.test.runner.AndroidJUnit4
 
 import org.junit.Test
@@ -13,10 +12,10 @@ import com.munstein.bitkotlin.main.MainActivity
 import android.support.test.rule.ActivityTestRule
 import org.junit.Rule
 import android.support.test.espresso.Espresso.onData
+import android.support.test.espresso.action.ViewActions.click
 import android.support.test.espresso.assertion.ViewAssertions.matches
-import android.support.test.espresso.matcher.ViewMatchers.withText
-import org.hamcrest.CoreMatchers.anything
-import org.hamcrest.CoreMatchers.not
+import android.support.test.espresso.matcher.ViewMatchers.*
+import org.hamcrest.CoreMatchers.*
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -24,7 +23,7 @@ import org.hamcrest.CoreMatchers.not
  * See [testing documentation](http://d.android.com/tools/testing).
  */
 @RunWith(AndroidJUnit4::class)
-class ExampleInstrumentedTest {
+open class ExampleInstrumentedTest {
 
     @Rule @JvmField
     val mActivityRule = ActivityTestRule(MainActivity::class.java)
@@ -43,7 +42,19 @@ class ExampleInstrumentedTest {
     }
 
     @Test
-    fun check_IfTextViewValueLoad(){
+    fun check_ifSpinnerValuesChange(){
+        onData(anything()).inAdapterView(withId(R.id.main_spinner_currency)).atPosition(1)
+                .perform(click())
+        onData(anything()).inAdapterView(withId(R.id.main_spinner_currency)).atPosition(2)
+                .perform(click())
+        onData(anything()).inAdapterView(withId(R.id.main_spinner_currency)).atPosition(1)
+                .perform(click())
+        onData(anything()).inAdapterView(withId(R.id.main_spinner_currency)).atPosition(2)
+                .perform(click())
+    }
+
+    @Test
+    fun check_IfTextViewValueLoad() {
         onView(withId(R.id.main_txt_value)).check(matches(not(withText(""))));
     }
 
