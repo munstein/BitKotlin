@@ -7,14 +7,7 @@ import io.reactivex.Observable
 /**
  * Created by @Munstein on 15/11/2017. --01:01
  */
-class MainModel : MainMVP.IModel {
-
-    private lateinit var coreData : Map<String, BitcoinValues>
-    private var service : BitcoinApiService
-
-    constructor(service : BitcoinApiService){
-        this.service = service
-    }
+class MainModel(private var service: BitcoinApiService) : MainMVP.IModel {
 
     override fun getBitcoinValues(): Observable<Map<String, BitcoinValues>> {
         return service.getBitcoinValues()

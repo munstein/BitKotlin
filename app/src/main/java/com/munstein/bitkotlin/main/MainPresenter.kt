@@ -9,17 +9,10 @@ import io.reactivex.schedulers.Schedulers
  * Created by @Munstein on 10/11/2017. --16:39
  */
 
-class MainPresenter : MainMVP.IPresenter{
+class MainPresenter(private var view: MainMVP.IView, private var model: MainMVP.IModel) : MainMVP.IPresenter{
 
-    private var view : MainMVP.IView
-    private var model : MainMVP.IModel
     private var disposable: Disposable? = null
-    lateinit var data : Map<String, BitcoinValues>
-
-    constructor(view : MainMVP.IView, model : MainMVP.IModel){
-        this.view = view
-        this.model = model
-    }
+    private lateinit var data : Map<String, BitcoinValues>
 
     override fun getAndDisplayBitcoinValue() {
         view.showProgressDialog("loading...")
@@ -43,15 +36,15 @@ class MainPresenter : MainMVP.IPresenter{
     }
 
     override fun onItemChange(value: String) {
-        var formattedValue = StringBuilder()
-        formattedValue.append(data.get(value)!!.symbol)
+        val formattedValue = StringBuilder()
+        formattedValue.append(data.get(value)?.symbol)
         formattedValue.append(" ")
-        formattedValue.append(data.get(value)!!._15m)
+        formattedValue.append(data.get(value)?._15m)
         view.loadValue(formattedValue.toString())
     }
 
     override fun onPause() {
-        disposable!!.dispose()
+        disposable?.dispose()
     }
 
 }
