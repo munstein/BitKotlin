@@ -14,12 +14,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity(), MainMVP.IView, AdapterView.OnItemSelectedListener {
 
-    private lateinit var presenter : MainPresenter
-    private lateinit var currenciesAdapter : ArrayAdapter<String>
-
-    private val dialog by lazy {
-        ProgressDialog(this)
-    }
+    private lateinit var presenter: MainPresenter
+    private lateinit var currenciesAdapter: ArrayAdapter<String>
 
     private val bitcoinApiService by lazy {
         BitcoinApiService.create()
@@ -36,15 +32,15 @@ class MainActivity : BaseActivity(), MainMVP.IView, AdapterView.OnItemSelectedLi
         presenter.onPause()
     }
 
-    private fun init(){
+    private fun init() {
         main_spinner_currency.onItemSelectedListener = this
-        dialog.isIndeterminate = true
         presenter = MainPresenter(this, MainModel(bitcoinApiService))
         presenter.getAndDisplayBitcoinValue()
     }
 
-    override fun loadCurrencies(currencies : List<String>) {
-        currenciesAdapter =  ArrayAdapter<String>(this,
+    override fun loadCurrencies(currencies: List<String>) {
+        main_group_success.visibility = View.VISIBLE
+        currenciesAdapter = ArrayAdapter<String>(this,
                 R.layout.custom_spinner_item, currencies)
         main_spinner_currency.adapter = currenciesAdapter
         currenciesAdapter.notifyDataSetChanged()
@@ -55,13 +51,12 @@ class MainActivity : BaseActivity(), MainMVP.IView, AdapterView.OnItemSelectedLi
         main_txt_value.text = currency
     }
 
-    override fun showProgressDialog(msg: String) {
-        dialog.setMessage(msg)
-        dialog.show()
+    override fun showProgress() {
+        main_spinkit.visibility = View.VISIBLE
     }
 
-    override fun hideProgressDialog() {
-        dialog.dismiss()
+    override fun hideProgress() {
+        main_spinkit.visibility = View.GONE
     }
 
     override fun showErrorMessage(msg: String) {
@@ -80,7 +75,7 @@ class MainActivity : BaseActivity(), MainMVP.IView, AdapterView.OnItemSelectedLi
         main_spinner_currency.visibility = View.GONE
     }
 
-    override fun hideError(){
+    override fun hideError() {
         main_txt_error.visibility = View.GONE
         main_txt_value.visibility = View.VISIBLE
         main_spinner_currency.visibility = View.VISIBLE

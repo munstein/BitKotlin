@@ -16,8 +16,8 @@ interface MainMVP {
     interface IView {
         fun loadCurrencies(currencies : List<String>)
         fun loadValue(currency : String)
-        fun showProgressDialog(msg : String)
-        fun hideProgressDialog()
+        fun showProgress()
+        fun hideProgress()
         fun showErrorMessage(msg : String)
         fun hideError()
         fun showError()
