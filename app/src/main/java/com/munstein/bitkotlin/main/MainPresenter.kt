@@ -39,7 +39,7 @@ class MainPresenter(private var view: MainMVP.IView, private var model: MainMVP.
         val formattedValue = StringBuilder()
         formattedValue.append(data.get(value)?.symbol)
         formattedValue.append(" ")
-        formattedValue.append(data.get(value)?._15m)
+        formattedValue.append(data.get(value)?.value)
         view.loadValue(formattedValue.toString())
     }
 

@@ -44,13 +44,13 @@ class MainTest {
         val value = 540.90
         val key = "MCK"
 
-        mockBitcoinValue._15m = value
+        mockBitcoinValue.value = value
         mockBitcoinValue.symbol = symbol
         mockValue.put(key, mockBitcoinValue)
         `when`(mockModel.getBitcoinValues())
                 .thenReturn(Observable.just(mockValue))
         val result = mockModel.getBitcoinValues().blockingFirst()
-        assertEquals(value, result.get(key)?._15m)
+        assertEquals(value, result.get(key)?.value)
         assertEquals(symbol, result.get(key)?.symbol)
     }
 
