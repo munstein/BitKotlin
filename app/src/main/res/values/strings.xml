@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">BitKotlin</string>
+    <string name="unable_to_access_the_server">Unable to access the server.</string>
 </resources>

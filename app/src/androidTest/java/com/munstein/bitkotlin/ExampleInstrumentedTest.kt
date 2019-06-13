@@ -1,20 +1,20 @@
 package com.munstein.bitkotlin
 
-import android.support.test.InstrumentationRegistry
-import android.support.test.espresso.Espresso.onView
-import android.support.test.runner.AndroidJUnit4
+import androidx.test.InstrumentationRegistry
+import androidx.test.espresso.Espresso.onView
+import androidx.test.runner.AndroidJUnit4
 
 import org.junit.Test
 import org.junit.runner.RunWith
 
 import org.junit.Assert.*
 import com.munstein.bitkotlin.main.MainActivity
-import android.support.test.rule.ActivityTestRule
+import androidx.test.rule.ActivityTestRule
 import org.junit.Rule
-import android.support.test.espresso.Espresso.onData
-import android.support.test.espresso.action.ViewActions.click
-import android.support.test.espresso.assertion.ViewAssertions.matches
-import android.support.test.espresso.matcher.ViewMatchers.*
+import androidx.test.espresso.Espresso.onData
+import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.matcher.ViewMatchers.*
 import org.hamcrest.CoreMatchers.*
 
 /**
